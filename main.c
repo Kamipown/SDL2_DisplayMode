@@ -20,7 +20,7 @@ void	print_display_info(int displayNumber)
 	SDL_DisplayMode mode;
 	Uint32 f;
 
-	// SDL_GetNumDisplayModes return the number of modes available for a specific screen.
+	// SDL_GetNumDisplayModes returns the number of available modes for a specific screen.
 	display_mode_count = SDL_GetNumDisplayModes(displayNumber);
 	if (display_mode_count < 1)
 	{
@@ -30,12 +30,12 @@ void	print_display_info(int displayNumber)
 		return ;
 	}
 
-	// We print the number of modes available for the current screen.
+	// We print the number of available modes for the current screen.
 	printf("-----------------------------------------------------------------------\n");
 	printf("Informations for the display number %i:\n", displayNumber);
 	printf("%i Display Mode(s) available.\n", display_mode_count);
 
-	// We print informations of each modes.
+	// We print informations of each mode.
 	i = 0;
 	while (i < display_mode_count)
 	{
@@ -54,8 +54,8 @@ void	print_display_info(int displayNumber)
 
 	if (SDL_GetDesktopDisplayMode(displayNumber, &mode) != 0)
 	{
-		// If SDL_GetDesktopDisplayMode return an error (!= 0)
-		// We put an error and the funciton is stopped.
+		// If SDL_GetDesktopDisplayMode returns an error (!= 0)
+		// We put an error and the function is stopped.
 		printf("SDL_GetDisplayMode failed: %s\n", SDL_GetError());
 		return ;
 	}
@@ -64,8 +64,8 @@ void	print_display_info(int displayNumber)
 
 	if (SDL_GetCurrentDisplayMode(displayNumber, &mode) != 0)
 	{
-		// If SDL_GetCurrentDisplayMode return an error (!= 0)
-		// We put an error and the funciton is stopped.
+		// If SDL_GetCurrentDisplayMode returns an error (!= 0)
+		// We put an error and the function is stopped.
 		printf("SDL_GetCurrentDisplayMode failed: %s\n", SDL_GetError());
 		return ;
 	}
@@ -78,9 +78,8 @@ void	print_display_info(int displayNumber)
 		int SDL_SetWindowDisplayMode(SDL_Window *window, const SDL_DisplayMode* mode)
 		This will only affects the display mode used when the window is fullscreen.
 
-		To resize a not fullscreen window, you can use :
+		If your window is not fullscreen, you can use :
 		void SDL_SetWindowSize(SDL_Window *window, int w, int h);
-
 
 		To set a window fullscreen, you can use :
 		int SDL_SetWindowFullscreen(SDL_Window *window, Uint32 flags)
@@ -101,7 +100,7 @@ int		main(int argc, char *argv[])
 		return (1);
 	}
 
-	// SDL_GetNumVideoDisplays return the number of screens detected by SDL.
+	// SDL_GetNumVideoDisplays returns the number of screens detected by SDL.
 	if ((numVideoDisplays = SDL_GetNumVideoDisplays()) < 1)
 	{
 		// If SDL does not detect screens (numVideoDisplays < 1)
@@ -110,7 +109,7 @@ int		main(int argc, char *argv[])
 		return (1);
 	}
 
-	// We print the number of screens detected.
+	// We print the number of detected screens.
 	printf("You have %i display(s).\n\n", numVideoDisplays);
 
 	// Then we print informations of each screen.
