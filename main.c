@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #define SDL_MAIN_HANDLED
 #include <SDL2/SDL.h>
@@ -60,7 +61,6 @@ static void	print_current_display_mode(int display_index)
 
 static void	displays_loop(int display_index)
 {
-	int i;
 	int display_mode_count;
 	SDL_DisplayMode mode;
 
@@ -100,11 +100,11 @@ int			main(int argc, char *argv[])
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
 		printf("SDL_Init failed: %s\n", SDL_GetError());
-		return (1);
+		return (EXIT_FAILURE);
 	}
 	print_displays_info();
 	SDL_Quit();
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 /*
